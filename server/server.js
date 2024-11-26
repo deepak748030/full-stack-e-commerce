@@ -17,7 +17,6 @@ const commonFeatureRouter = require("./routes/common/feature-routes");
 const dotenv = require("dotenv");
 dotenv.config({ path: "./.env" });
 
-// MongoDB Connection
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))
@@ -26,26 +25,9 @@ mongoose
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Allowed Origins
-const allowedOrigins = [
-  "http://localhost:5000",
-  "https://eccomerce-jade.vercel.app"
-];
-
-// CORS Middleware
 app.use(
   cors({
-    origin: function (origin, callback) {
-      // Allow requests with no origin (like mobile apps or curl)
-      if (!origin) return callback(null, true);
-
-      // Check if origin is allowed
-      if (allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
+    origin: ["http://localhost:5000", "https://eccomerce-jade.vercel.app"],
     methods: ["GET", "POST", "DELETE", "PUT"],
     allowedHeaders: [
       "Content-Type",
@@ -54,18 +36,15 @@ app.use(
       "Expires",
       "Pragma",
     ],
-    credentials: true, // Enable credentials for cookies
+    credentials: true,
   })
 );
 
-app.get("/", (req, res) => {
-  res.send("server started");
-});
-
+app.get('/', (_req, res) => {
+  res.send('server started');
+})
 app.use(cookieParser());
 app.use(express.json());
-
-// API Routes
 app.use("/api/auth", authRouter);
 app.use("/api/admin/products", adminProductsRouter);
 app.use("/api/admin/orders", adminOrderRouter);
