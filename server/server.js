@@ -29,10 +29,19 @@ const PORT = process.env.PORT || 5000;
 
 app.use(
   cors({
-    origin: "*",
-    methods: ["GET", "POST", "DELETE", "PUT"]
+     origin: "http://localhost:5000" || "https://eccomerce-jade.vercel.app",
+    methods: ["GET", "POST", "DELETE", "PUT"],
+    allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+      "Cache-Control",
+      "Expires",
+      "Pragma",
+    ],
+    credentials: true,
   })
 );
+
 
 app.get('/',(req,res)=>{
   res.send('server started');
