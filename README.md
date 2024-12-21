@@ -1,4 +1,4 @@
-# E-Commerce Website (MERN Stack)
+# full-stack-e-commerce Website (MERN Stack)
 
 Welcome to the **E-Commerce Website** repository! This project is a full-stack e-commerce platform built using the **MERN** stack (MongoDB, Express.js, React, Node.js). It allows users to browse products, add them to a cart, and proceed to checkout.
 
@@ -28,7 +28,7 @@ Follow these steps to set up and run the project locally:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/deepak748030/eccomerce-.git
+git clone https://github.com/deepak748030/full-stack-e-commerce.git
 ```
 
 ### 2. Navigate to the Project Directory
